@@ -10,7 +10,7 @@ use App\Comment;
 class CommentController extends Controller
 {
     public function index(){
-        header("Access-Control-Allow-Origin");
+        header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
         $comments = DB::table('comments')->where('status','1')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
         
