@@ -17,9 +17,9 @@ class CreateCommentsTable extends Migration
             $table->string('name')->index();
             $table->string('email')->index();
             $table->string('comment')->index();
-            $table->bolean('status');
+            $table->boolean('status');
             $table->integer('stars');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('comments');
     }
 }

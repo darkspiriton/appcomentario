@@ -2,7 +2,7 @@
 
 Route::group(['prefix'=>'api'], function(){
     //Mostrar Comentarios
-    Route::resource('/comment','CommentController',
+    Route::resource('comment','CommentController',
                     ['only' => ['index','create','update']]);
 
     //Devuelve Cantidad de Usuarios
