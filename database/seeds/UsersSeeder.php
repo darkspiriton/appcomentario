@@ -13,23 +13,12 @@ class UsersSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-
-        for($i=0;$i<100;$i++){
-            DB::table('users_online')->insert(array(
-                'name' => $faker->name,
-                'email' => $faker->unique()->email,
-                'created_at' => $faker->dateTimeThisYear($max = 'now'),
-                'updated_at' => $faker->dateTimeThisMonth($max = 'now'),
-            ));
-        }
-
-        for($j=0;$j<800;$j++) {
-            DB::table('users_register')->insert(array(
-                'name' => $faker->name,
-                'email' => $faker->unique()->email,
-                'created_at' => $faker->dateTimeThisYear($max = 'now'),
-                'updated_at' => $faker->dateTimeThisMonth($max = 'now'),
-            ));
-        }
+        DB::table('users')->insert(array(
+            'cantO' => $faker->numberBetween($min = 0, $max = 100),
+            'cantR' => $faker->numberBetween($min = 500, $max = 1000),                
+            'created_at' => $faker->dateTimeThisYear($max = 'now'),
+            'updated_at' => $faker->dateTimeThisMonth($max = 'now'),
+        ));
+        
     }
 }

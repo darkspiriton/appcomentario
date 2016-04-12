@@ -12,19 +12,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_online', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('cantO');
+            $table->string('cantR');
             $table->timestamps();
         });
 
-        Schema::create('users_register', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamps();
-        });
+
     }
 
     /**
@@ -34,7 +29,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_online');
-        Schema::dropIfExists('users_register');
+        Schema::dropIfExists('users');
     }
 }

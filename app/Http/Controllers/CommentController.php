@@ -17,7 +17,7 @@ class CommentController extends Controller
     }
 
     public function create(Request $request){
-
+        header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
         $comment = new Comment();
         $comment->name= $request->header('name');
         $comment->email= $request->header('email');
@@ -30,7 +30,7 @@ class CommentController extends Controller
 
     }
 
-    public function update($id){
+    public function update($id){        
         $comment = Comment::find($id);
         $comment->status=1;
         $comment->save();
