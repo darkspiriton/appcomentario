@@ -12,7 +12,7 @@ class CommentsSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $faker = Faker::create('es_ES');
 
         for($i=0;$i<1000;$i++)
         {
@@ -21,7 +21,7 @@ class CommentsSeeder extends Seeder
                 'email' => $faker->unique()->email,
                 'comment'=> $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
                 'status' => $faker->numberBetween($min = 0, $max = 1),
-                'stars' => $faker->numberBetween($min = 1, $max = 5),
+                'stars' => $faker->numberBetween($min = 2, $max = 5),
                 'created_at' => $faker->dateTimeThisYear($max = 'now'),
                 'updated_at' => $faker->dateTimeThisMonth($max = 'now'),
             ));

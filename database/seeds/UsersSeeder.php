@@ -12,7 +12,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $faker = Faker::create('es_ES');
         DB::table('users')->insert(array(
             'cantO' => $faker->numberBetween($min = 0, $max = 100),
             'cantR' => $faker->numberBetween($min = 500, $max = 1000),                

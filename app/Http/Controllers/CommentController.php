@@ -18,11 +18,14 @@ class CommentController extends Controller
 
     public function create(Request $request){
         header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
+        header("Access-Control-Allow-Methods: GET");
+        header("ccess-Control-Allow-Headers: Content-Type");
+
         $comment = new Comment();
-        $comment->name= $request->header('name');
-        $comment->email= $request->header('email');
-        $comment->comment= $request->header('comment');
-        $comment->stars= $request->header('stars');
+        $comment->name= $request->input('name');
+        $comment->email= $request->input('email');
+        $comment->comment= $request->input('comment');
+        $comment->stars= $request->input('stars');
         $comment->status = 0;
         $comment->save();
 
