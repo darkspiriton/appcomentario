@@ -11,7 +11,7 @@ class CommentController extends Controller
 {
     public function index(){
 
-        $comments = DB::table('comments')->where('status','1')->get();
+        $comments = DB::table('comments')->where('status','1')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
         
     }
