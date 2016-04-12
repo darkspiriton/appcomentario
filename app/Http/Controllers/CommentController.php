@@ -12,8 +12,7 @@ class CommentController extends Controller
     public function index(){
         header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
         $comments = DB::table('comments')->where('status','1')->orderBy('created_at','desc')->get();
-        return response()->json(['comments' => $comments],200);
-        
+        return response()->json(['comments' => $comments],200);        
     }
 
     public function create(Request $request){
@@ -33,10 +32,6 @@ class CommentController extends Controller
         }else{
             return response()->json(['message' => 'No posee todo los campos necesario para crear un usuario'],401);
         }
-
-
-
-
     }
 
     public function update($id){        
