@@ -21,15 +21,21 @@ class CommentController extends Controller
         header("Access-Control-Allow-Methods: GET");
         header("Access-Control-Allow-Headers: Content-Type");
 
-        $comment = new Comment();
-        $comment->name= $request->input('name');
-        $comment->email= $request->input('email');
-        $comment->comment= $request->input('comment');
-        $comment->stars= $request->input('stars');
-        $comment->status = 0;
-        $comment->save();
+        if($request->input('name') & $request->input('email') & $request->input('comment') & $request->input('start') ){
+            $comment = new Comment();
+            $comment->name= $request->input('name');
+            $comment->email= $request->input('email');
+            $comment->comment= $request->input('comment');
+            $comment->stars= $request->input('stars');
+            $comment->status = 0;
+            $comment->save();
+            return response()->json(['message' => 'Se agrego correctamente'],200);
+        }else{
+            return response()->json(['message' => 'No posee todo los campos necesario para crear un usuario'],401);
+        }
 
-        return response()->json(['message' => 'Se agrego correctamente'],200);
+
+
 
     }
 
