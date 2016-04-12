@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::group(['prefix'=>'api'], function(){
+    //Mostrar Comentarios
+    Route::resource('/comment','CommentController',
+                    ['only' => ['index','create','update']]);
+
+    //Devuelve Cantidad de Usuarios
+    Route::resource('user','UserController',
+                    ['only' => ['index']]);
+
 });
