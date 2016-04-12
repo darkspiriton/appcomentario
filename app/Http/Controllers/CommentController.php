@@ -21,7 +21,7 @@ class CommentController extends Controller
         header("Access-Control-Allow-Methods: GET");
         header("Access-Control-Allow-Headers: Content-Type");
 
-        if($request->input('name') and $request->input('email') and $request->input('comment') and $request->input('start') ){
+        if($request->input('name') and $request->input('email') and $request->input('comment') and $request->input('stars') ){
             $comment = new Comment();
             $comment->name= $request->input('name');
             $comment->email= $request->input('email');
