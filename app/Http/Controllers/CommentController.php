@@ -20,7 +20,25 @@ class CommentController extends Controller
         header("Access-Control-Allow-Methods: GET");
         header("Access-Control-Allow-Headers: Content-Type");
 
-        if($request->input('name') and $request->input('email') and $request->input('comment') and $request->input('stars') ){
+        if (!is_array($request->all())) {
+            return response()->json(['message' => 'request must be an array'],401);
+        }
+        // Creamos las reglas de validación
+        $rules = [
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'comment'  => 'required',
+            'stars'  => 'required'
+        ];
+
+        try {
+            // Ejecutamos el validador y en caso de que falle devolvemos la respuesta
+            // con los errores
+            $validator = \Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return response()->json(['message' => 'No posee todo los campos necesario para crear un usuario'],401);
+            }
+            // Si el validador pasa, almacenamos el comentario
             $comment = new Comment();
             $comment->name= $request->input('name');
             $comment->email= $request->input('email');
@@ -29,8 +47,9 @@ class CommentController extends Controller
             $comment->status = 0;
             $comment->save();
             return response()->json(['message' => 'Se agrego correctamente'],200);
-        }else{
-            return response()->json(['message' => 'No posee todo los campos necesario para crear un usuario'],401);
+        } catch (Exception $e) {
+            // Si algo sale mal devolvemos un error.
+            return \Response::json(['message' => 'Ocurrio un erro al crear el comentario'], 500);
         }
     }
 
