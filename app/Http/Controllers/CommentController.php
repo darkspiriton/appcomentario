@@ -12,8 +12,8 @@ class CommentController extends Controller
     public function index(){
         header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
         header("Access-Control-Allow-Methods: GET");
-        header("Access-Control-Allow-Headers: Content-Type");
-        header("Access-Control-Request-Headers: #api-key");
+        header("Access-Control-Allow-Headers: api-key");
+        header("Access-Control-Request-Headers: api-key");
         $comments = DB::table('comments')->where('status','1')->orderBy('created_at','desc')->paginate(10);
         return response()->json(['comments' => $comments],200);
     }
