@@ -17,10 +17,10 @@ class VerifyAccessKey
     public function handle($request, Closure $next)
     {
         // Obtenemos el api-key que el usuario envia
-        $key = $request->headers->get('api_key');
+        $key = $request->headers->get('api-key');
         // Si coincide con el valor almacenado en la aplicacion
         // la aplicacion se sigue ejecutando
-        if (isset($key) == Config::get('app.api_key')) {
+        if ($key == Config::get('app.api_key')) {
             return $next($request);
         } else {
             // Si falla devolvemos el mensaje de error
