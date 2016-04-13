@@ -10,3 +10,7 @@ Route::group(['prefix'=>'api'], function(){
                     ['only' => ['index']]);
 
 });
+
+Route::get('/',function(){
+   return view('welcome');
+});
