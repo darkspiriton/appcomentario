@@ -16,7 +16,7 @@ class VerifyAccessKey
      */
     public function handle($request, Closure $next)
     {
-        header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
+        header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: GET");
         header("Access-Control-Allow-Headers: api-key");
         header("Access-Control-Request-Headers: api-key");
