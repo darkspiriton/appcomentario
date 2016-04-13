@@ -16,18 +16,12 @@ class VerifyAccessKey
      */
     public function handle($request, Closure $next)
     {
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET");
-        header("Access-Control-Allow-Headers: api-key");
-        header("Access-Control-Request-Headers: api-key");
         // Obtenemos el api-key que el usuario envia
         $key = $request->headers->get('api-key');
         // Si coincide con el valor almacenado en la aplicacion
         // la aplicacion se sigue ejecutando
         if ($key == Config::get('app.api_key')) {
-            return $next($request)
-                ->header('Access-Control-Allow-Origin', '*')
-                ->header('Access-Control-Allow-Methods', 'GET');;
+            return $next($request);
         } else {
             // Si falla devolvemos el mensaje de error
             return response()->json(['error' => 'unauthorized' ]);
