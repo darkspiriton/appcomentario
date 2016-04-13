@@ -13,7 +13,7 @@ return [
     'allowedOrigins' => ['*'],
     'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],
-    'exposedHeaders' => [],
+    'exposedHeaders' => ['api-key'],
     'maxAge' => 0,
     'hosts' => [],
 ];
