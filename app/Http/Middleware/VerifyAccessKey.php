@@ -25,7 +25,9 @@ class VerifyAccessKey
         // Si coincide con el valor almacenado en la aplicacion
         // la aplicacion se sigue ejecutando
         if ($key == Config::get('app.api_key')) {
-            return $next($request);
+            return $next($request)
+                ->header('Access-Control-Allow-Origin', '*')
+                ->header('Access-Control-Allow-Methods', 'GET');;
         } else {
             // Si falla devolvemos el mensaje de error
             return response()->json(['error' => 'unauthorized' ]);
