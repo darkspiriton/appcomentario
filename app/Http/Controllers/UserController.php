@@ -9,6 +9,7 @@ use App\Http\Requests;
 class UserController extends Controller
 {
     public function index(){
+        header("Access-Control-Allow-Origin: http://dev.nosvenden.com");        
         $user= User::find(1);
         $this->actualizarUserO();
         $this->createUSerR();

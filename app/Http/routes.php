@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix'=>'api','middleware'=>['cors','web']], function(){
+Route::group(['prefix'=>'api','middleware'=>['web']], function(){
     //Mostrar Comentarios
     Route::resource('comment','CommentController',
                     ['only' => ['index','create','update','destroy']]);

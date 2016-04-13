@@ -7,8 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "fzaninotto/faker": "^1.5",
-        "barryvdh/laravel-cors": "^0.8.0"
+        "fzaninotto/faker": "^1.5"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
