@@ -22,6 +22,10 @@ class CommentController extends Controller
     }
 
     public function admin(){
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
+        header("Access-Control-Allow-Headers: Content-Type");
+        header("Content-Type: application/json");
         $comments = DB::table('comments')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
     }
