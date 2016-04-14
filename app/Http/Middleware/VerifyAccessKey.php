@@ -17,7 +17,7 @@ class VerifyAccessKey
     public function handle($request, Closure $next)
     {
         header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET");
+        header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE");
         header("Access-Control-Allow-Headers: Content-Type");
         // Obtenemos el api-key que el usuario envia
         $key = $request->input('api-key');
