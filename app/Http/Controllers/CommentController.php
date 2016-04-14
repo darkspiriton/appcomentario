@@ -18,7 +18,7 @@ class CommentController extends Controller
     }
 
     public function admin(){     
-         header("Content-Type: application/json");        
+        header("Content-Type: application/json");        
         $comments = DB::table('comments')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
     }
@@ -63,7 +63,9 @@ class CommentController extends Controller
     }
 
     public function update($id){
-
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: PUT");
+        header("Access-Control-Allow-Headers: Content-Type");
         try{
 
             $comment = Comment::find($id);
@@ -82,7 +84,9 @@ class CommentController extends Controller
     }
 
     public function destroy($id){
-
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: DELETE");
+        header("Access-Control-Allow-Headers: Content-Type");
         try{
             $comment = Comment::find($id);
             if ($comment !== null){
