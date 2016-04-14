@@ -11,7 +11,9 @@ use Psy\Exception\FatalErrorException;
 
 class CommentController extends Controller
 {
-    public function index(){  
+    
+    public function index(){
+        
         $comments = DB::table('comments')->where('status','1')->orderBy('created_at','desc')->paginate(10);
         return response()->json(['comments' => $comments],200);
     }

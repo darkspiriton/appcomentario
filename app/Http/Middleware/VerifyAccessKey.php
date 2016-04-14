@@ -19,6 +19,8 @@ class VerifyAccessKey
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
         header("Access-Control-Allow-Headers: Content-Type");
+        header("Content-Type: application/json");
+        
         // Obtenemos el api-key que el usuario envia
         $key = $request->input('api-key');
         // Si coincide con el valor almacenado en la aplicacion
