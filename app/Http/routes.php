@@ -9,6 +9,6 @@ Route::group(['prefix'=>'api','middleware'=>['web']], function(){
     Route::resource('user','UserController',
                     ['only' => ['index']]);
 
-    Route::route('admin/comment','CommentController@admin');
+    Route::get('admin/comment','CommentController@admin');
 
 });
