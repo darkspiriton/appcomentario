@@ -13,20 +13,11 @@ class CommentController extends Controller
 {
     
     public function index(){
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
-        header("Access-Control-Allow-Headers: Content-Type");
-        header("Content-Type: application/json");
         $comments = DB::table('comments')->where('status','1')->orderBy('created_at','desc')->paginate(10);
         return response()->json(['comments' => $comments],200);
     }
 
-    public function admin(){
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
-        header("Access-Control-Allow-Headers: Content-Type");
-        header("Content-Type: application/json");
-        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    public function admin(){     
         $comments = DB::table('comments')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
     }
