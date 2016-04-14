@@ -14,8 +14,14 @@ class CommentController extends Controller
         return response()->json(['comments' => $comments],200);
     }
 
+    public function admin(){
+        $comments = DB::table('comments')->orderBy('created_at','desc')->get();
+        return response()->json(['comments' => $comments],200);
+    }
+
+
     public function create(Request $request){
-        header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
+        header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: GET");
         header("Access-Control-Allow-Headers: Content-Type");
 
@@ -52,19 +58,19 @@ class CommentController extends Controller
         }
     }
 
-    public function update($id){        
+    public function update(Request $request){
+        dd($id=$request->input('id'));
         $comment = Comment::find($id);
         $comment->status=1;
         $comment->save();
+
     }
 
-    public function destroy($id){
-        $comment = Comment::find($id);
+    public function destroy(Request $request){
+
+        $comment = Comment::find($request->input('id'));
         $comment->delete();
-    }
-
-    public function select(){
-
+        
     }
        
 
