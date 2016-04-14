@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Comment;
+use ErrorException;
+use Psy\Exception\FatalErrorException;
 
 class CommentController extends Controller
 {
@@ -58,18 +60,39 @@ class CommentController extends Controller
         }
     }
 
-    public function update(Request $request){
-        dd($id=$request->input('id'));
-        $comment = Comment::find($id);
-        $comment->status=1;
-        $comment->save();
+    public function update($id){
+
+        try{
+
+            $comment = Comment::find($id);
+            if ($comment !== null) {
+                $comment->status=1;
+                $comment->save();
+                return response()->json(['message' => 'Se actualizo correctamente'],200);
+            }
+            return \Response::json(['message' => 'No existe ese comentario'], 404);
+
+        }catch (ErrorException $e){
+            return \Response::json(['message' => 'Ocurrio un error'], 500);
+        }
+
 
     }
 
-    public function destroy(Request $request){
+    public function destroy($id){
 
-        $comment = Comment::find($request->input('id'));
-        $comment->delete();
+        try{
+            $comment = Comment::find($id);
+            if ($comment !== null){
+                $comment->delete();
+                return response()->json(['message' => 'Se elimino correctamente el comentario'],200);
+            }
+            //$comment->save();
+            return \Response::json(['message' => 'No existe ese comentario'], 404);
+        }catch (ErrorException $e){
+            return \Response::json(['message' => 'Ocurrio un error'], 500);
+        }
+
         
     }
        
