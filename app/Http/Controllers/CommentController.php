@@ -26,6 +26,7 @@ class CommentController extends Controller
         header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
         header("Access-Control-Allow-Headers: Content-Type");
         header("Content-Type: application/json");
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
         $comments = DB::table('comments')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
     }
