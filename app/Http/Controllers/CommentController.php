@@ -18,6 +18,7 @@ class CommentController extends Controller
     }
 
     public function admin(){     
+         header("Content-Type: application/json");        
         $comments = DB::table('comments')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
     }
