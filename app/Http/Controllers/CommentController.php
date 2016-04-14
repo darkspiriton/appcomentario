@@ -15,7 +15,7 @@ class CommentController extends Controller
     }
 
     public function admin(){
-        $comments = DB::table('comments')->orderBy('created_at','desc')->all();
+        $comments = DB::table('comments')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
     }
 
