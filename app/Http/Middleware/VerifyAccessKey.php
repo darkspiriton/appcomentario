@@ -18,7 +18,7 @@ class VerifyAccessKey
     {
         header("Access-Control-Allow-Origin: http://localhost:8000");
         header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
-        header("Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin");
+        header("Access-Control-Allow-Headers: ACCEPT, CONTENT-TYPE, X-CSRF-TOKEN");
         header('Access-Control-Allow-Credentials: true');
         header("Content-Type: application/json");
 
