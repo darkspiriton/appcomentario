@@ -25,10 +25,6 @@ class CommentController extends Controller
 
 
     public function create(Request $request){
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET");
-        header("Access-Control-Allow-Headers: Content-Type");
-
         if (!is_array($request->all())) {
             return response()->json(['message' => 'request must be an array'],401);
         }
@@ -63,10 +59,6 @@ class CommentController extends Controller
     }
 
     public function update($id){
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: PUT");
-        header("Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin");
-        header('Access-Control-Allow-Credentials: true');
         try{
 
             $comment = Comment::find($id);
@@ -85,9 +77,6 @@ class CommentController extends Controller
     }
 
     public function destroy($id){
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: DELETE");
-        header("Access-Control-Allow-Headers: Content-Type");
         try{
             $comment = Comment::find($id);
             if ($comment !== null){

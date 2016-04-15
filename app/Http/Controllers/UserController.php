@@ -9,7 +9,6 @@ use App\Http\Requests;
 class UserController extends Controller
 {
     public function index(){
-        header("Access-Control-Allow-Origin: http://dev.nosvenden.com");
         $user= User::find(1);
         $this->actualizarUserO();
         $this->createUSerR();
@@ -19,7 +18,7 @@ class UserController extends Controller
     }
 
     private function actualizarUserO(){
-      
+
         $user= User::find(1);
         $n = rand(0,3);
 
