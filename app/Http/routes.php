@@ -1,5 +1,8 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Credentials: true');
+
 Route::group(['prefix'=>'api','middleware'=>['web']], function(){
     //Mostrar Comentarios
     Route::resource('comment','CommentController',
