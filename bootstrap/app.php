@@ -11,6 +11,11 @@
 |
 */
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Credentials: true');
+header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
+header("Content-Type: application/json");
+
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
