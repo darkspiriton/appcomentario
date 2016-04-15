@@ -2,7 +2,7 @@
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
-//header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
+header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
 header("Content-Type: application/json");
 
 Route::group(['prefix'=>'api','middleware'=>['web']], function(){
