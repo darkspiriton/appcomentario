@@ -13,7 +13,7 @@
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
-header('Access-Control-Allow-Headers: accept, content-type, x-xsrf-token, x-csrf-token');
+header('Access-Control-Allow-Headers: accept, content-type, x-xsrf-token, x-csrf-token, authorization');
 header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
 header("Content-Type: application/json");
 
