@@ -11,11 +11,11 @@
 |
 */
 // allow origin
-header('Access-Control-Allow-Origin: *');
+//header('Access-Control-Allow-Origin: *');
 // add any additional headers you need to support here
-header('Access-Control-Allow-Headers: Origin, Content-Type');
+//header('Access-Control-Allow-Headers: Origin, Content-Type');
 
-header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
+//header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
 
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
