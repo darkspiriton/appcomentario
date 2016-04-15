@@ -18,9 +18,10 @@ class VerifyAccessKey
     {
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS, HEAD");
-        header("Access-Control-Allow-Headers: Content-Type");
+        header("Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin");
+        header('Access-Control-Allow-Credentials: true');
         header("Content-Type: application/json");
-        
+
         // Obtenemos el api-key que el usuario envia
         $key = $request->input('api-key');
         // Si coincide con el valor almacenado en la aplicacion
@@ -29,7 +30,7 @@ class VerifyAccessKey
             return $next($request);
         } else {
             // Si falla devolvemos el mensaje de error
-            return response()->json(['error' => 'unauthorized' ]);
+            return response()->json(['error' => 'unauthorized' ],400);
         }
     }
 }

@@ -11,14 +11,14 @@ use Psy\Exception\FatalErrorException;
 
 class CommentController extends Controller
 {
-    
+
     public function index(){
         $comments = DB::table('comments')->where('status','1')->orderBy('created_at','desc')->paginate(10);
         return response()->json(['comments' => $comments],200);
     }
 
-    public function admin(){     
-        header("Content-Type: application/json");        
+    public function admin(){
+        header("Content-Type: application/json");
         $comments = DB::table('comments')->orderBy('created_at','desc')->get();
         return response()->json(['comments' => $comments],200);
     }
@@ -65,7 +65,8 @@ class CommentController extends Controller
     public function update($id){
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: PUT");
-        header("Access-Control-Allow-Headers: Content-Type");
+        header("Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin");
+        header('Access-Control-Allow-Credentials: true');
         try{
 
             $comment = Comment::find($id);
@@ -99,8 +100,8 @@ class CommentController extends Controller
             return \Response::json(['message' => 'Ocurrio un error'], 500);
         }
 
-        
+
     }
-       
+
 
 }
