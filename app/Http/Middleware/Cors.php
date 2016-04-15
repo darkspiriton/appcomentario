@@ -15,8 +15,9 @@ class Cors
      */
     public function handle($request, Closure $next)
     {
-      if ($request->isMethod('options')) {
+      if ($request->isMethod('OPTIONS')) {
             return response('', 200)
+              ->header('Access-Control-Request-Method', 'POST, GET, OPTIONS, PUT, DELETE')
               ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
               ->header('Access-Control-Allow-Headers', 'accept, content-type,
                 x-xsrf-token, x-csrf-token'); // Add any required headers here
