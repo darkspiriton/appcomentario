@@ -11,7 +11,8 @@
 |
 */
 // allow origin
-//header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Credentials: true');
 // add any additional headers you need to support here
 //header('Access-Control-Allow-Headers: Origin, Content-Type');
 
